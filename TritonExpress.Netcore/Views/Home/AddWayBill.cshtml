@@ -1,0 +1,209 @@
+﻿@{ ViewBag.Title = "Add Waybill"; }
+
+@using  Microsoft.AspNetCore.Mvc.Rendering;
+
+@model TritonExpress.Models.ViewModels.WayBillViewModel
+<br />
+<section class="content-wrapper menu-content">
+</section>
+<section class="content-wrapper main-content clear-fix">
+    @using (Html.BeginForm("AddWayBill", "Home", FormMethod.Post, new { id = "addwaybillForm", @autocomplete = "off" }))
+    {
+                @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Assign Waybill To This Vehicle</h4>
+        <hr />
+        <div class="form-group">
+            @Html.HiddenFor(m => m.VehicleID)
+            <div class="row">
+                <label class="control-label col-md-2">
+                    @Html.LabelFor(m => m.PickUpByDate)
+                </label>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(m => m.PickUpByDate)<span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.PickUpByDate)
+                </div>
+                <div class="col-md-1">
+                </div>
+                <label class="control-label col-md-2">
+                    @Html.LabelFor(m => m.DeliveredByDate)
+                </label>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(m => m.DeliveredByDate) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.DeliveredByDate)
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="control-label col-md-2">
+                    @Html.LabelFor(m => m.Origin)
+                </label>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(m => m.Origin) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.Origin)
+                </div>
+                <div class="col-md-1">
+                </div>
+                <label class="control-label col-md-2">
+                    @Html.LabelFor(m => m.Destination)
+                </label>
+                <div class="col-sm-9 col-md-3">
+                    @Html.TextBoxFor(m => m.Destination)<span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.Destination)
+                </div>
+            </div>
+            <br />
+            <h6>Shipper's Information</h6>
+            <hr />
+            <div class="row">
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ShipperCompanyName)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ShipperCompanyName)<span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ShipperCompanyName)
+                </div>
+
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ShipperContactName)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ShipperContactName) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ShipperContactName)
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ShipperAddress)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextAreaFor(m => m.ShipperAddress, new { rows = 3, cols = 22 }) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ShipperAddress)
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ShipperTelephoneNumber)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ShipperTelephoneNumber) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ShipperTelephoneNumber)
+                </div>
+            </div>
+            <br />
+            <h6>Receiver's Information</h6>
+            <hr />
+            <div class="row">
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ReceiverCompanyName)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ReceiverCompanyName)<span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ReceiverCompanyName)
+                </div>
+
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ReceiverContactName)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ReceiverContactName) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ReceiverContactName)
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ReceiverAddress)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextAreaFor(m => m.ReceiverAddress, new { rows = 3, cols = 22 }) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ReceiverAddress)
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ReceiverTelephoneNumber)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ReceiverTelephoneNumber) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ReceiverTelephoneNumber)
+                </div>
+            </div>
+            <hr />
+
+
+            <div class="row">
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.DescriptionOfContent)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextAreaFor(m => m.DescriptionOfContent, new { rows = 4, cols = 40 })
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.PaymentOfCharge)
+                </label>
+                <div class="col-md-9">
+
+                    @Html.TextBoxFor(m => m.PaymentOfCharge)<span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.PaymentOfCharge)
+                    <br />
+                    e.g Shipper, Receiver Or 3rd Party 
+                </div>
+                <br />
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.TotalNumberOfParcels)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.TotalNumberOfParcels) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ReceiverAddress)
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.TotalWeightInKgs)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.TotalWeightInKgs) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.TotalWeightInKgs)
+                </div>
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.TotalCharge)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.TotalCharge) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.TotalCharge)
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ActualShipmentDate)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ActualShipmentDate)<span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ActualShipmentDate)
+                </div>
+              
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.ActualShipmentReceivedByDate)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(m => m.ActualShipmentReceivedByDate) <span class="required col-md-1"> * </span>
+                    @Html.ValidationMessageFor(m => m.ActualShipmentReceivedByDate)
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="control-label col-md-3">
+                    @Html.LabelFor(m => m.Comments)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextAreaFor(m => m.Comments, new { rows = 4, cols = 40 })
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <button class="btn-success btn" type="submit">Add</button>
+                    <a class="btn-danger btn" asp-area="" asp-controller="Home" asp-action="SearchVehicle">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+     }
+
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

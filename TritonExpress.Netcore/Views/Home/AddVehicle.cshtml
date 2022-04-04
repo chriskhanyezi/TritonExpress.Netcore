@@ -1,0 +1,75 @@
+﻿@{ ViewBag.Title = "Add Vehicle"; }
+
+@using  Microsoft.AspNetCore.Mvc.Rendering;
+
+@model TritonExpress.Models.ViewModels.VehicleViewModel
+<br />
+<section class="content-wrapper menu-content">
+</section>
+<section class="content-wrapper main-content clear-fix">
+    @using (Html.BeginForm("AddVehicle", "Home", FormMethod.Post, new { id = "addvehicleForm", @autocomplete = "off" }))
+    {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <h4>Add Vehicle</h4>
+                    <hr />
+                    <div class="form-group">
+                        <div class="row">
+                            <label class="control-label col-md-3">
+                                @Html.LabelFor(m => m.LicensePlateNumber)
+                            </label>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.LicensePlateNumber)<span class="required col-md-1"> * </span>
+                                @Html.ValidationMessageFor(m => m.LicensePlateNumber)
+                            </div>
+                            
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-3">
+                                @Html.LabelFor(m => m.Model)
+                            </label>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Model) <span class="required col-md-1"> * </span>
+                                @Html.ValidationMessageFor(m => m.Model)
+                            </div>
+                            
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-3">
+                                @Html.LabelFor(m => m.Make)
+                            </label>
+                            <div class="col-sm-9 col-md-6">
+                                @Html.TextBoxFor(m => m.Make)<span class="required col-md-1"> * </span>
+                                @Html.ValidationMessageFor(m => m.Make)
+                            </div>
+                            
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="control-label col-md-3">
+                                @Html.LabelFor(m => m.Type)
+                            </label>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Type)<span class="required col-md-1"> * </span>
+                                @Html.ValidationMessageFor(m => m.Type)
+                            </div>
+                            
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-4">
+                                <button class="btn-success btn" type="submit">Add</button>
+                                <a class="btn-danger btn" asp-area="" asp-controller="Home" asp-action="SearchVehicle">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>}
+
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

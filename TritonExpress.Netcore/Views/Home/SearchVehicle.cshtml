@@ -1,0 +1,20 @@
+﻿@{ ViewBag.Title = "Search Vehicle"; }
+
+@using  Microsoft.AspNetCore.Mvc.Rendering;
+
+@model IEnumerable<TritonExpress.Models.ViewModels.VehicleViewModel>
+<br />
+<section class="content-wrapper menu-content">
+</section>
+<section class="content-wrapper main-content clear-fix">
+    @if (Model != null && Model.Count() > 0)
+    {
+        @Html.Partial("VehiclesPartial", Model)  
+    }
+    else
+    {
+        @Html.Partial("SearchPartial", new TritonExpress.Models.ViewModels.VehicleViewModel() )
+    }
+
+</section>
+

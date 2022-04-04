@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TritonExpress.Models.ViewModels.VehicleViewModel>
+
+@{
+    ViewData["Title"] = "Vehicles";
+}
+
+<h4><a class="glyphicon glyphicon-plus-search" asp-area="" asp-controller="" asp-action=""> Search Vehicles</a>  | <a class="glyphicon glyphicon-plus-sign" asp-area="" asp-controller="Home" asp-action="AddVehicle">Create New Vehicle</a> </h4>
+<br />
+
+@if (Model != null && Model.Count() > 0)
+{
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    License Plate Number
+                </th>
+                <th>
+                    Model
+                </th>
+                <th>
+                    Make
+                </th>
+                <th>
+                    Type
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicensePlateNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Home" asp-action="UpdateVehicle" asp-route-id="@item.Id" class="glyphicon glyphicon-pencil" title="Update Vehicle"><b>Update</b></a>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Home" asp-action="AddWayBill" asp-route-id="@item.Id" class="glyphicon glyphicon-book" title="Add WayBill"><b>Add WayBill</b></a>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Home" asp-action="ViewWayBills" asp-route-id="@item.Id" class="glyphicon glyphicon-book" title="View WayBills Assigned"><b>View WayBills</b></a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
